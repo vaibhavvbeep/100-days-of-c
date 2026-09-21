@@ -1,0 +1,43 @@
+//Q79: Perform diagonal traversal of a matrix.
+#include <stdio.h>
+
+int main() {
+    int rows, cols, i, j;
+
+    scanf("%d %d", &rows, &cols);
+
+    int a[rows][cols];
+
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            scanf("%d", &a[i][j]);
+        }
+    }
+
+    int total_diagonals = rows + cols - 1;
+
+    for (int d = 0; d < total_diagonals; d++) {
+        int r, c;
+
+        if (d % 2 == 0) {
+            r = (d < rows) ? d : rows - 1;
+            c = d - r;
+            while (r >= 0 && c < cols) {
+                printf("%d ", a[r][c]);
+                r--;
+                c++;
+            }
+        } else {
+            c = (d < cols) ? d : cols - 1;
+            r = d - c;
+            while (c >= 0 && r < rows) {
+                printf("%d ", a[r][c]);
+                r++;
+                c--;
+            }
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
