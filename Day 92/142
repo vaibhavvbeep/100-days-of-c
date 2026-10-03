@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+struct Student {
+    char name[100];
+    int roll_no;
+    int marks;
+};
+
+int main() {
+    struct Student s[5];
+    int i;
+
+    for (i = 0; i < 5; i++) {
+        if (scanf("%99s %d %d", s[i].name, &s[i].roll_no, &s[i].marks) != 3) {
+            return 1;
+        }
+    }
+
+    printf("%-20s %-10s %-10s\n", "Name", "Roll", "Marks");
+    for (i = 0; i < 5; i++) {
+        printf("%-20s %-10d %-10d\n", s[i].name, s[i].roll_no, s[i].marks);
+    }
+
+    return 0;
+}
