@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+struct Student {
+    char name[100];
+    int roll_no;
+    int marks;
+};
+
+int main() {
+    int n, i, top_idx = 0;
+
+    if (scanf("%d", &n) != 1 || n <= 0) {
+        return 1;
+    }
+
+    struct Student s[n];
+
+    for (i = 0; i < n; i++) {
+        if (scanf("%99s %d %d", s[i].name, &s[i].roll_no, &s[i].marks) != 3) {
+            return 1;
+        }
+        if (s[i].marks > s[top_idx].marks) {
+            top_idx = i;
+        }
+    }
+
+    printf("Topper: %s (Marks: %d)\n", s[top_idx].name, s[top_idx].marks);
+
+    return 0;
+}
