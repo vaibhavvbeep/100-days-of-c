@@ -1,0 +1,40 @@
+//Q123: Read a text file and count the total number of characters, words, and lines. A word is defined as a sequence of non-space characters separated by spaces or newlines.
+#include <stdio.h>
+
+int main() {
+    FILE *fp = fopen("sample.txt", "r");
+    if (fp == NULL) {
+        return 1;
+    }
+
+    long characters = 0, words = 0, lines = 0;
+    char c;
+    int in_word = 0;
+    char prev = 0;
+
+    while ((c = fgetc(fp)) != EOF) {
+        characters++;
+        if (c == '\n') {
+            lines++;
+        }
+        if (c == ' ' || c == '\t' || c == '\n' || c == '\r') {
+            in_word = 0;
+        } else if (!in_word) {
+            in_word = 1;
+            words++;
+        }
+        prev = c;
+    }
+
+    if (characters > 0 && prev != '\n') {
+        lines++;
+    }
+
+    fclose(fp);
+
+    printf("Characters: %ld\n", characters);
+    printf("Words: %ld\n", words);
+    printf("Lines: %ld\n", lines);
+
+    return 0;
+}
