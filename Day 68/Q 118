@@ -1,0 +1,19 @@
+//Q118: Write a program to take an input array of size n. The array should contain all the integers between 0 to n except for one. Print that missing number
+#include <stdio.h>
+
+int main() {
+    int n, i, sum = 0;
+
+    if (scanf("%d", &n) == 1) {
+        int nums[n];
+        for (i = 0; i < n; i++) {
+            scanf("%d", &nums[i]);
+            sum += nums[i];
+        }
+
+        int expected_sum = n * (n + 1) / 2;
+        printf("%d\n", expected_sum - sum);
+    }
+
+    return 0;
+}
