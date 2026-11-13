@@ -1,0 +1,62 @@
+#include <stdio.h>
+
+enum Months {
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC
+};
+
+int main() {
+    char input[20];
+    enum Months m;
+
+    if (scanf("%19s", input) != 1) {
+        return 1;
+    }
+
+    if (input[0] == 'J' && input[1] == 'A') m = JAN;
+    else if (input[0] == 'F') m = FEB;
+    else if (input[0] == 'M' && input[2] == 'R') m = MAR;
+    else if (input[0] == 'A' && input[1] == 'P') m = APR;
+    else if (input[0] == 'M' && input[2] == 'Y') m = MAY;
+    else if (input[0] == 'J' && input[1] == 'U' && input[2] == 'N') m = JUN;
+    else if (input[0] == 'J' && input[1] == 'U' && input[2] == 'L') m = JUL;
+    else if (input[0] == 'A' && input[1] == 'U') m = AUG;
+    else if (input[0] == 'S') m = SEP;
+    else if (input[0] == 'O') m = OCT;
+    else if (input[0] == 'N') m = NOV;
+    else if (input[0] == 'D') m = DEC;
+    else return 1;
+
+    switch (m) {
+        case JAN:
+        case MAR:
+        case MAY:
+        case JUL:
+        case AUG:
+        case OCT:
+        case DEC:
+            printf("31 days\n");
+            break;
+        case APR:
+        case JUN:
+        case SEP:
+        case NOV:
+            printf("30 days\n");
+            break;
+        case FEB:
+            printf("28 or 29 days\n");
+            break;
+    }
+
+    return 0;
+}
