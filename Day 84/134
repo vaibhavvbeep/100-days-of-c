@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+enum Status {
+    SUCCESS,
+    FAILURE,
+    TIMEOUT
+};
+
+int main() {
+    char input[20];
+    enum Status s;
+
+    if (scanf("%19s", input) != 1) {
+        return 1;
+    }
+
+    if (input[0] == 'S') {
+        s = SUCCESS;
+    } else if (input[0] == 'F') {
+        s = FAILURE;
+    } else if (input[0] == 'T') {
+        s = TIMEOUT;
+    } else {
+        return 1;
+    }
+
+    switch (s) {
+        case SUCCESS:
+            printf("Operation succeeded\n");
+            break;
+        case FAILURE:
+            printf("Operation failed\n");
+            break;
+        case TIMEOUT:
+            printf("Operation timed out\n");
+            break;
+    }
+
+    return 0;
+}
