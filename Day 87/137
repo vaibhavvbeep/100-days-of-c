@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+enum Role {
+    ADMIN,
+    USER,
+    GUEST
+};
+
+int main() {
+    char input[20];
+    enum Role r;
+
+    if (scanf("%19s", input) != 1) {
+        return 1;
+    }
+
+    if (input[0] == 'A') {
+        r = ADMIN;
+    } else if (input[0] == 'U') {
+        r = USER;
+    } else if (input[0] == 'G') {
+        r = GUEST;
+    } else {
+        return 1;
+    }
+
+    switch (r) {
+        case ADMIN:
+            printf("Welcome Admin!\n");
+            break;
+        case USER:
+            printf("Welcome User!\n");
+            break;
+        case GUEST:
+            printf("Welcome Guest!\n");
+            break;
+    }
+
+    return 0;
+}
