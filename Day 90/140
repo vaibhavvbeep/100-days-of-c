@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <string.h>
+
+enum Gender {
+    MALE,
+    FEMALE,
+    OTHER
+};
+
+struct Person {
+    enum Gender gender;
+};
+
+int main() {
+    char input[50];
+    char *val;
+    struct Person p;
+
+    if (scanf("%49s", input) != 1) {
+        return 1;
+    }
+
+    val = strchr(input, '=');
+    val = (val != NULL) ? val + 1 : input;
+
+    if (strcmp(val, "MALE") == 0) {
+        p.gender = MALE;
+    } else if (strcmp(val, "FEMALE") == 0) {
+        p.gender = FEMALE;
+    } else if (strcmp(val, "OTHER") == 0) {
+        p.gender = OTHER;
+    } else {
+        return 1;
+    }
+
+    switch (p.gender) {
+        case MALE:
+            printf("Male\n");
+            break;
+        case FEMALE:
+            printf("Female\n");
+            break;
+        case OTHER:
+            printf("Other\n");
+            break;
+    }
+
+    return 0;
+}
